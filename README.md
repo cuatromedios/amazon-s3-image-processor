@@ -8,7 +8,7 @@
  
  1. Manually or with your content management system, you upload your original images to your Amazon S3 **source bucket**. For example: ```source-bucket/image.jpg```
  2. In your templates / html files you call the images as if they exist in your **destination bucket** (destination-bucket) using the special **endpoint** provided by amazon in Static Website hosting but you append the preset as a directory, for example: ```https://destination-bucket.s3-website-us-west-1.amazonaws.com/thumb/image.jpg```
- 3. Because the image does not exist, Amazon will redirect the call to your application, for example: ```https://your-application.com/thumb/image.jpg```
+ 3. Because the image does not exist, Amazon will redirect the call to your application (configuration required), for example: ```https://your-application.com/thumb/image.jpg```
  4. The object name, ```image.jpg``` will be searched in your source-bucket and then download it
  5. The application will take the frist directory ```thumb``` as a preset and will look for it in your configuration, the will process the image (for example resize it) and then:
      1. Send to the client the result image
@@ -56,8 +56,8 @@
  1. Files in S3 bucket **must** have extension like .jpg or .png, currently, this app does not support changing image format, if the source is a JPG the destination will be a JPG
  2. Use urls provided for Static Websites. **It will not work with any other url** these Urls are like ```bucket-name.s3-website-us-west-1.amazonaws.com``` for example:
      1. ```https://bucket-name.s3-website-us-west-1.amazonaws.com/thumb/image.jpg``` **will work**
-     2. ```https://s3-us-west-1.amazonaws.com/bucket-name/thumb/nieve.jpg``` **WON'T work** 
-     2. ```https://bucket-name.s3-us-west-1.amazonaws.com/thumb/nieve.jpg``` **WON'T work** 
+     2. ```https://s3-us-west-1.amazonaws.com/bucket-name/thumb/image.jpg``` **WON'T work** 
+     2. ```https://bucket-name.s3-us-west-1.amazonaws.com/thumb/image.jpg``` **WON'T work** 
  
 ### Configure
 
