@@ -1,22 +1,24 @@
-#Amazon S3 Image processor
-####by [Cuatromedios](http://www.cuatromedios.com/)
+# Amazon S3 Image processor
+
+#### by [Cuatromedios](http://www.cuatromedios.com/)
  
  Takes an image from an Amazon S3 bucket, process it, and then stores the result in another bucket. If you configure the S3 Bucket to redirect not found images to this script, the images will be generated on demand without exposing the original file. The next time another user ask for the same image in S3 url, the image will be served from S3 not consuming more bandwidth or process time of the application.
  
- ###This is how the magic happens:
+ ### This is how the magic happens:
+ 
  1. Manually or with your content management system, you upload your original images to your Amazon S3 **source bucket**. For example: ```source-bucket/image.jpg```
  2. In your templates / html files you call the images as if they exist in your **destination bucket** (destination-bucket) using the special **endpoint** provided by amazon in Static Website hosting but you append the preset as a directory, for example: ```https://destination-bucket.s3-website-us-west-1.amazonaws.com/thumb/image.jpg```
- 3. Because the image does not exist, Amazon will redirect the call to your application, for example:
- ```https://your-application.com/thumb/image.jpg```
+ 3. Because the image does not exist, Amazon will redirect the call to your application, for example: ```https://your-application.com/thumb/image.jpg```
  4. The object name, ```image.jpg``` will be searched in your source-bucket and then download it
  5. The application will take the frist directory ```thumb``` as a preset and will look for it in your configuration, the will process the image (for example resize it) and then:
      1. Send to the client the result image
      2. Send to destination bucket the result image
  6. The next time a user request the image from Amazon, it will **NOT** be redirected to your application because the image will be there already!
  
- ##Configuration
+ ## Configuration
  
- ###Prepare Amazon S3
+ ### Prepare Amazon S3
+ 
  1. You will need two Amazon S3 buckets, source and destination, create them in Amazon Web Services
  2. Go to IAM Service and create a new user or choose any user you have defined there. You will need the Access Key ID and Secret Access Key
  3. Be sure the user has at least read permissions in the source bucket and write permissions in destination bucket:
@@ -57,7 +59,8 @@
      2. ```https://s3-us-west-1.amazonaws.com/bucket-name/thumb/nieve.jpg``` **WON'T work** 
      2. ```https://bucket-name.s3-us-west-1.amazonaws.com/thumb/nieve.jpg``` **WON'T work** 
  
-###Configure
+### Configure
+
  1. Edit settings.json file to add your Amazon S3 bucket key and. You can take the settings.sample.json file as a sample
  2. Edit presets.json file to customize the presets for images you need. Yo can take presets.sample.json file as a sample, parameters are taken from [Jimp](https://www.npmjs.com/package/jimp), but not all are supported (yet). You will need one property per preset, each one with its own properties:
      1. **width**: The width of the image in pixels
@@ -98,7 +101,7 @@ Sample presets.json file:
  }
  ```
  
-##Running your app
+## Running your app
 
 Remember to `npm install` (first time, only once, to install the required packages).
 
@@ -115,13 +118,19 @@ If for some reason you change a preset, you can just delete all images processed
 3. Processed images are not deleted because they may be requested again and again because the browser will cache the redirect if the redirect continues (need to see that in amazon) so it take the ones already processed
 
 
-####Thanks to these two very special packages used in this application:
+#### Thanks to these two very special packages used in this application:
+
 ##### Jimp
+
 An image processing library written entirely in JavaScript 
 [https://www.npmjs.com/package/jimp](https://www.npmjs.com/package/jimp)
+
 ##### Knox
+
 Amazon S3 client
 [https://www.npmjs.com/package/knox](https://www.npmjs.com/package/knox)
+
 ##### Express
+
 Fast, unopinionated, minimalist web framework for Node.js
 [http://expressjs.com/](http://expressjs.com/)
