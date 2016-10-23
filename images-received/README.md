@@ -1,0 +1,1 @@
+In this folder will be created the temporal getted files. Is it saf to delete files if one was left here and not deleted by the app.

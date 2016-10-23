@@ -1,0 +1,12 @@
+{
+  "aws": {
+    "accessKeyId": "your-access-key-id",
+    "secretAccessKey": "your-secret-access-key",
+    "sourceBucket": "sourceBucket",
+    "destinationBucket": "destinationBucket"
+  },
+  "paths": {
+    "imagesReceived": "images-received",
+    "imagesProcessed": "images-processed"
+  }
+}

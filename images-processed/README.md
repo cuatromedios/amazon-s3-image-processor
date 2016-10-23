@@ -1,0 +1,1 @@
+In this folder will be created the processed files. Is it safe to delete files if one was left here and not deleted by the app.

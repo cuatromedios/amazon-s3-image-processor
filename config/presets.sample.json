@@ -1,0 +1,15 @@
+{
+  "thumb": {
+    "width": 240,
+    "height": 240,
+    "scaleMode": "contain",
+    "horizontalAlign": "center",
+    "verticalAlign": "middle",
+    "quality": 60,
+    "background": "ffffff"
+  },
+  "icon": {
+    "width": 64,
+    "height": 64
+  }
+}
