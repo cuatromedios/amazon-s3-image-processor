@@ -4,7 +4,7 @@
  
  Takes an image from an Amazon S3 bucket, process it, and then stores the result in another bucket. If you configure the S3 Bucket to redirect not found images to this script, the images will be generated on demand without exposing the original file. The next time another user ask for the same image in S3 url, the image will be served from S3 not consuming more bandwidth or process time of the application.
  
- ### This is how the magic happens:
+### This is how the magic happens:
  
  1. Manually or with your content management system, you upload your original images to your Amazon S3 **source bucket**. For example: ```source-bucket/image.jpg```
  2. In your templates / html files you call the images as if they exist in your **destination bucket** (destination-bucket) using the special **endpoint** provided by amazon in Static Website hosting but you append the preset as a directory, for example: ```https://destination-bucket.s3-website-us-west-1.amazonaws.com/thumb/image.jpg```
