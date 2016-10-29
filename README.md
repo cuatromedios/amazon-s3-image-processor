@@ -41,7 +41,8 @@
      3. Enable Website hosting if not done already. **Take note of the special endpoint used for static Websites provided.** these Urls are like ```bucket-name.s3-website-us-west-1.amazonaws.com```
      4. Open "Edit Redirection Rules"
      5. Write the rules like this:
-        ```XML
+     
+```XML
         <RoutingRules>
             <RoutingRule>
                 <Condition>
@@ -53,7 +54,7 @@
                  </Redirect>
             </RoutingRule>
         </RoutingRules>
-        ```
+```
         
  **Important**
  1. Files in S3 bucket **must** have extension like .jpg or .png, currently, this app does not support changing image format, if the source is a JPG the destination will be a JPG
