@@ -1,6 +1,8 @@
-# Amazon S3 Image processor
+# Lazy Amazon S3 Image processor
 
 #### by [Cuatromedios](http://www.cuatromedios.com/)
+ 
+ If you don't want to proccess an image once uploaded because you don't know what sizes you will need in the future then this script is for you.
  
  Takes an image from an Amazon S3 bucket, process it, and then stores the result in another bucket. If you configure the S3 Bucket to redirect not found images to this script, the images will be generated on demand without exposing the original file. The next time another user ask for the same image in S3 url, the image will be served from S3 not consuming more bandwidth or process time of the application.
  
@@ -47,7 +49,8 @@
                 </Condition>
                 <Redirect>
                     <HostName>your-application.com</HostName>
-                </Redirect>
+                    <HttpRedirectCode>302</HttpRedirectCode>
+                 </Redirect>
             </RoutingRule>
         </RoutingRules>
         ```
