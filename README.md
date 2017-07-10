@@ -122,7 +122,7 @@ If for some reason you change a preset, you can just delete all images processed
 3. Processed images are not deleted because they may be requested again and again because the browser will cache the redirect if the redirect continues (need to see that in amazon) so it take the ones already processed
 
 
-#### Thanks to these two very special packages used in this application:
+#### Thanks to these awesome packages used in this application:
 
 ##### Jimp
 
